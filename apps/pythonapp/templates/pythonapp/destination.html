@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+         <h6><a href='http://localhost:8000/travels'>Home</a> <a href='/logout'>Logout</a></h6>
+{%for plan in plans%}
+<h2>{{plan.destination}}</h2>
+
+<h5>Planned by: {{plan.name}}</h5>
+<h5>Description: {{plan.plan}}</h5>
+<h5>Travel Date From: {{plan.startdate}}</h5>
+<h5>Travel Date To: {{plan.enddate}}</h5>
+{%endfor%}
+
+<h3>Other users' joining the trip:</h3>
+{%for join in joins%}
+
+<h5>{{join.user_id.name}}</h5>
+{%endfor%}
+
+        
+
+
+            
+
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Hello, {{request.session.username}}</h1>
+        <h6><a href='/logout'>Logout</a></h6>
+
+        <h4>Your trip schedules</h4>
+
+        <table style='border:1px solid black;'>
+            <thead>
+                <tr >
+                <td>Destination</td>
+                <td>Time Start Date</td>
+                <td>Time End Date</td>
+                <td>Plan</td>
+                </tr>
+                 </thead>
+                <tbody>
+                    {%for myplans in mytravelplans%}
+                    <tr>
+                        <td><a href='/destination/{{myplans.id}}'>{{myplans.destination}}</a></td>
+                        <td>{{myplans.startdate}}</td>
+                        <td>{{myplans.enddate}}</td>
+                        <td>{{myplans.plan}}</td>
+                    </tr>
+                    {%endfor%}
+                    {%for join in joins%}
+                    <tr>
+                        <td><a href='/destination/{{join.plan_id.id}}'>{{join.plan_id.destination}}</a></td>
+                        <td>{{join.plan_id.destination}}</td>
+                        <td>{{join.plan_id.enddate}}</td>
+                        <td>{{join.plan_id.plan}}</td>
+                        
+                    </tr>
+                    {%endfor%}
+                </tbody>
+           
+        </table>
+
+<h4>Others trip schedules</h4>
+{%for message in messages%}
+        <p>{{message}}</p>
+        {%endfor%}
+        
+       <table style='border:1px solid black;'>
+            <thead>
+                <tr>
+                <td>Destination</td>
+                <td>Time Start Date</td>
+                <td>Time End Date</td>
+                <td>Plan</td>
+                <td>Do you want to join?</td>
+                </tr>
+                </thead>
+                <tbody>
+                    {%for plan in travelplans%}
+                    <tr>
+                        <td><a href='/destination/{{plan.id}}'>{{plan.destination}}</a></td>
+                        <td>{{plan.startdate}}</td>
+                        <td>{{plan.enddate}}</td>
+                        <td>{{plan.plan}}</td>
+                        <td><a href="/join/{{plan.id}}">Join</a></td>
+                      
+                    
+                    </tr>
+                     {%endfor%}                   
+                   </tbody>
+            
+        </table>
+
+    <h6><a href='/addtrip'>Add Travel Plan</a></h6>
+
+
+    </body>
+</html>
